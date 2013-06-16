@@ -1,9 +1,10 @@
 request = require 'request'
+md5 = require 'MD5'
 
 module.exports = (app) ->
-	class app.html
+	class app.hash
 
-		@getHTML = (url, html) ->
+		@getHash = (url, hash) ->
 			request.get url, (error, response, body) ->
 				if not error and response.statusCode is 200
-					html body
+					hash md5 body

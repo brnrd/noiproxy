@@ -3,10 +3,10 @@ module.exports = (app) ->
 
     # GET /
     @index = (req, res) ->
-      res.render 'index', view: 'index'
+      res.render 'index'
 
-    @html = (req, res) ->
+    @hash = (req, res) ->
     	url = "http://#{req.params.site}"
-    	app.html.getHTML url, (html) ->
-    		res.set 'Content-Type', 'text/html'
-    		res.send new Buffer(html)
+    	app.hash.getHash url, (hash) ->
+    		res.set 'Content-Type', 'text/plain'
+    		res.send new Buffer(hash)
